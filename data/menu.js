@@ -1,6 +1,9 @@
+/* we add custom order like we do for Lost in Tokyo
+even though this is the first item, it will come 3rd on lage screens, 
+and first one small screens - as this is a small screen*/
 const menu = [
   {
-    children: 'Lost in Toyko',
+    children: 'Lost in Tokyo',
     logo: true,
     className: 'order-3-ns w-100 w-30-ns mb3 mb0-ns',
     href: 'index.html'

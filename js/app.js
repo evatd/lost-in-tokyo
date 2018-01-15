@@ -22,14 +22,22 @@ const Intro = () =>
         </div>
     </div>;
 
-/* map runs through each item in the array and performs a function on each one and returns
-a list of things, post-function */
-
-const menu = ["About", "Tickets", "Logo", "Journal"];
-
+/* Map runs through each item in the array and performs a function on each one and returns
+a list of things, i.e. grabbing a property off each object in our map array.
+Here, App can access the Menu array because it's linked in index.html  */
 const Nav = () => (
-    <nav>
-        <ul>{menu.map(item => <li>{item}</li>)}
+    <nav className="pt3 pt4-ns mb4 mb0-ns">
+        {/* list removes bullet points, flexbox applief, wrap onto new lines when it's on mobile, don't wrap 
+    onto new line when on the screen that is not small, justify space between them, 
+    center the item vertically, padding on all sides of 0, margin on all sides of 0 */}
+        <ul className="list flex flex-wrap flex-nowrap-ns justify-between">
+            {menu.map(item => (
+                /* backticks useful when objects have something in common (say mh2-ns styling) 
+                and want to pull what's different for every item via ${} */
+                <li className={`mh2-ns f6 f4-l tc ${item.className}`}>
+                    <a className="white no-underline" href={item.href}>{item.children}</a>
+                </li>
+            ))}
         </ul>
     </nav>
 );
