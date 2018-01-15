@@ -26,7 +26,9 @@ const Intro = () =>
     </div>;
 
 /* accepts props as an argument
-chnage item.href to props.gref */
+change item.href to props.href 
+update: when we specify the props we want - className, href in our argument
+we can shorten the props.href to just href*/
 const NavItem = ({className, href, children}) => (
     <li className={`mh2-ns f6 f4-l tc ${className}`}>
         <a className="white no-underline" href={href}>{children}</a>
