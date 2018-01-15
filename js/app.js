@@ -40,8 +40,11 @@ const Nav = () => (
         <ul className="list flex flex-wrap flex-nowrap-ns justify-between">
             {menu.map(item => (
                 /* pass in what NavItem uses - children, href, className 
-                NavItem accepts these as props (as argument)*/
-                <NavItem children={item.children} href={item.href} className={item.className} />
+                but pass it altogether via spread operator, DRY
+                take the item variablr and all the properties inside it 
+                and lay them out onto our NavItem -
+                instead of writing each one out.*/
+                <NavItem {...item} />
             ))}
         </ul>
     </nav>
