@@ -17,17 +17,31 @@ const Intro = () =>
         </div>
 
         <div>
-            From museums and galleries, to Robot Restaurants and kitten
-            cafes, Tokyo is the gift that keeps on giving. Dattebayo!{' '}
+            From <Highlight color="blue">museums</Highlight> and <Highlight color="aqua">galleries</Highlight>, to <Highlight color="pink">Robot Restaurants</Highlight> and <Highlight color="pink">kitten
+            cafes</Highlight>, Tokyo is the gift that keeps on giving. <Highlight color="yellow">Dattebayo!</Highlight>{' '}
         </div>
     </div>;
+
+/* map runs through each item in the array and performs a function on each one and returns
+a list of things, post-function */
+
+const menu = ["About", "Tickets", "Logo", "Journal"];
+
+const Nav = () => (
+    <nav>
+        <ul>{menu.map(item => <li>{item}</li>)}
+        </ul>
+    </nav>
+);
 
 const App = () => (
     <div>
         <div className="min-vh-100 ph4 flex flex-column">
+            <Nav />
             <Intro />
         </div>
-        <div className="flex flex-wrap container"></div>
+        <div className="flex flex-wrap container">
+        </div>
     </div>
 );
 
