@@ -1,8 +1,11 @@
-const Highlight = props => (
+/* name the props you want in lieu of props - DRY code 
+then delete props in "props.href"
+= destructuring*/
+const Highlight = ({children, color}) => (
     /* if we didn't pass in color via props then all the highlights would be of the same colour*/
-    <span className={`relative highlight highlight-${props.color}`}>
+    <span className={`relative highlight highlight-${color}`}>
         {/* grabbing all the contnet from the component and accessing it via props.children */}
-        <span className="relative z-2">{props.children}</span>
+        <span className="relative z-2">{children}</span>
     </span>
 )
 
@@ -24,9 +27,9 @@ const Intro = () =>
 
 /* accepts props as an argument
 chnage item.href to props.gref */
-const NavItem = props => (
-    <li className={`mh2-ns f6 f4-l tc ${props.className}`}>
-        <a className="white no-underline" href={props.href}>{props.children}</a>
+const NavItem = ({className, href, children}) => (
+    <li className={`mh2-ns f6 f4-l tc ${className}`}>
+        <a className="white no-underline" href={href}>{children}</a>
     </li>
 );
 /* Map runs through each item in the array and performs a function on each one and returns
@@ -40,8 +43,8 @@ const Nav = () => (
         <ul className="list flex flex-wrap flex-nowrap-ns justify-between">
             {menu.map(item => (
                 /* pass in what NavItem uses - children, href, className 
-                but pass it altogether via spread operator, DRY
-                take the item variablr and all the properties inside it 
+                but pass it altogether via spread operator, DRY and easy to maintain as the data grows
+                take the item variable and all the properties inside it 
                 and lay them out onto our NavItem -
                 instead of writing each one out.*/
                 <NavItem {...item} />
