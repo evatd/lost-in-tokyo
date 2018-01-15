@@ -22,10 +22,16 @@ body {
 
 .highlight {
   padding-bottom: 0.25em;
+  /* Prevent the text from wrapping */
   white-space: nowrap;
 }
 
-.highlight:before {
+/* Pseudo-element must be a child of the element to which it is being applied - highlight
+: before will inseert highlights immediately before the content of every div element
+surrounded by the Highlight component which has a class of highlight=the below styling
+*/
+ .highlight:before {
+  /* Pseudo elements need content */
   content: '';
   position: absolute;
   left: 0;
@@ -46,7 +52,9 @@ body {
 .highlight-aqua:before {
   height: 14px;
   background-image: url('../images/zigzag.svg');
+  /* The background image is repeated only horizontally */
   background-repeat: repeat-x;
+  /* Sets the initial vertical position, it's bottom, not top/center */
   background-position-y: bottom;
 }
 
