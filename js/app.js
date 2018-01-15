@@ -1,7 +1,7 @@
 /* name the props you want in lieu of props - DRY code 
 then delete props in "props.href"
 = destructuring*/
-const Highlight = ({children, color}) => (
+const Highlight = ({ children, color }) => (
     /* if we didn't pass in color via props then all the highlights would be of the same colour*/
     <span className={`relative highlight highlight-${color}`}>
         {/* grabbing all the contnet from the component and accessing it via props.children */}
@@ -29,12 +29,18 @@ const Intro = () =>
 change item.href to props.href 
 update: when we specify the props we want - className, href in our argument
 we can shorten the props.href to just href*/
-const NavItem = ({className, href, children}) => (
+const NavItem = ({ className, href, children, logo }) => (
     <li className={`mh2-ns f6 f4-l tc ${className}`}>
-        <a className="white no-underline" href={href}>{children}</a>
+        <a className="white no-underline" href={href}>
+            {/* we check for the logo props, if we have it (set to true in data)
+        we render out the logo
+        otherwise just show the title, which is outlined as children in data */}
+            {logo ? <img src="../images/logo.svg" className="db center logo" /> :
+                children}
+        </a>
     </li>
 );
-/* Map runs through each item in the array and performs a function on each one and returns
+/* map runs through each item in the array and performs a function on each one and returns
 a list of things, i.e. grabbing a property off each object in our map array.
 Here, App can access the Menu array because it's linked in index.html  */
 const Nav = () => (
