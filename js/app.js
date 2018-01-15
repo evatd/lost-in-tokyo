@@ -22,6 +22,13 @@ const Intro = () =>
         </div>
     </div>;
 
+/* accepts props as an argument
+chnage item.href to props.gref */
+const NavItem = props => (
+    <li className={`mh2-ns f6 f4-l tc ${props.className}`}>
+        <a className="white no-underline" href={props.href}>{props.children}</a>
+    </li>
+);
 /* Map runs through each item in the array and performs a function on each one and returns
 a list of things, i.e. grabbing a property off each object in our map array.
 Here, App can access the Menu array because it's linked in index.html  */
@@ -32,11 +39,9 @@ const Nav = () => (
     center the item vertically, padding on all sides of 0, margin on all sides of 0 */}
         <ul className="list flex flex-wrap flex-nowrap-ns justify-between">
             {menu.map(item => (
-                /* backticks useful when objects have something in common (say mh2-ns styling) 
-                and want to pull what's different for every item via ${} */
-                <li className={`mh2-ns f6 f4-l tc ${item.className}`}>
-                    <a className="white no-underline" href={item.href}>{item.children}</a>
-                </li>
+                /* pass in what NavItem uses - children, href, className 
+                NavItem accepts these as props (as argument)*/
+                <NavItem children={item.children} href={item.href} className={item.className} />
             ))}
         </ul>
     </nav>
