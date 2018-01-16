@@ -61,26 +61,30 @@ const Nav = () => (
     </nav>
 );
 
-const Attraction = ({ title, description, className, image }) => (
-    /* include classNames shared by the components and then pull their unique styles via ${} */
-    <div
-        className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer 
-      attraction ${className}`}
-    >
-        {/* content under relative will be hidden initially */}
-        <div className="relative">
-            {/* our overlay which includes title and description;
-    absolute positioning, viewport 100, flexbox, center items, background colour, font sizes */}
-            <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay">
-                <div>
-                    <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
-                    <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
+class Attraction extends React.Component {
+    render() {
+        const { title, description, className, image } = this.props;
+        return (
+            <div
+                className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer 
+          attraction ${className}`}>
+                {/* content under relative will be hidden initially */}
+                <div className="relative">
+                    {/* our overlay which includes title and description;
+        absolute positioning, viewport 100, flexbox, center items, background colour, font sizes */}
+                    <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay">
+                        <div>
+                            <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+                            <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
+                        </div>
+                    </div>
+                    <img src={`../images/${image}`} className="db" />
                 </div>
             </div>
-            <img src={`../images/${image}`} className="db" />
-        </div>
-    </div>
-)
+        );
+    }
+}
+
 
 const App = () => (
     <div>
