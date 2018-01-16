@@ -18,6 +18,9 @@ body {
 
 .overlay {
   transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  /* translating/moving the element on Y axis, 
+  100% of its height upwards, hence the negative -100% */
+  transform: translateY(-100%);
 }
 
 .highlight {
