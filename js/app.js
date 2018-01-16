@@ -61,6 +61,17 @@ const Nav = () => (
     </nav>
 );
 
+const Attraction = ({ title, description, image, className }) => (
+    <div className={className}>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        {/* first have to navigate to images, file path is what they all share
+        then fetch individual files
+        So that we don't have to write the full path in data if we moved the images=DRY */}
+        <img src={`../images/${image}`} />
+    </div>
+);
+
 const App = () => (
     <div>
         <div className="min-vh-100 ph4 flex flex-column">
@@ -68,6 +79,11 @@ const App = () => (
             <Intro />
         </div>
         <div className="flex flex-wrap container">
+            {/* name of the array in data.map => singular item 
+        which we also note in the spread operator */}
+            {attractions.map(attraction => (
+                <Attraction {...attraction} />
+            ))}
         </div>
     </div>
 );
