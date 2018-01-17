@@ -70,6 +70,11 @@ class Attraction extends React.Component {
             showInfo: false
         }
     }
+
+    toggleInfo(){
+        /* test if toggle info works when you click on the element */
+        console.log("you have toggled");
+    }
     render() {
         const { title, description, className, image } = this.props;
         const { showInfo } = this.state;
@@ -77,7 +82,7 @@ class Attraction extends React.Component {
             <div
                 className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer 
           attraction ${className}`}
-                onClick={() => this.setState({ showInfo: true })}
+                onClick={this.toggleInfo}
             >
                 {/*check for the state: {showInfo ? 'show info': 'hide info'}*/}                {/* content under relative will be hidden initially */}
                 <div className="relative">
