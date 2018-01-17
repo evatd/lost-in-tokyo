@@ -69,11 +69,20 @@ class Attraction extends React.Component {
         this.state = {
             showInfo: false
         }
+        /* bind our custom method */
+        this.toggleInfo = this.toggleInfo.bind(this);
     }
 
     toggleInfo(){
-        /* test if toggle info works when you click on the element */
-        console.log("you have toggled");
+        /* we want the overlay to jump back too, 
+        toggle between the info being true and false
+        so we add prevState and props, so we have access to both and can toggle */
+        this.setState ((prevState, props)=>{{
+            /* here we invert our showInfo boolean by using 
+            the prev state (here we access the state) and the ! mark (here we overwrite the state) */
+            showInfo: !prevState.showInfo
+        }});
+        console.log("you have toggled!");
     }
     render() {
         const { title, description, className, image } = this.props;
