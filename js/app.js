@@ -71,19 +71,34 @@ class Attraction extends React.Component {
         }
         /* bind our custom method */
         this.toggleInfo = this.toggleInfo.bind(this);
+        this.closeInfo = this.closeInfo.bind(this);
     }
 
-    toggleInfo(){
-        /* we want the overlay to jump back too, 
+    toggleInfo() {
+        /* set up as function because we need access to previous state and props
+        we want the overlay to jump back too, 
         toggle between the info being true and false
         so we add prevState and props, so we have access to both and can toggle */
-        this.setState ((prevState, props)=>{{
-            /* here we invert our showInfo boolean by using 
-            the prev state (here we access the state) and the ! mark (here we overwrite the state) */
-            showInfo: !prevState.showInfo
-        }});
+        this.setState((prevState, props) => ({
+            
+                /* here we invert our showInfo boolean by using 
+                the prev state (here we access the state) and the ! mark (here we overwrite the state) */
+                showInfo: !prevState.showInfo
+            
+        }));
         console.log("you have toggled!");
     }
+
+    closeInfo() {
+        /* here setState is not a function like above, don't need prevState and props
+        we just force setting the state to false
+        so when the mouse leave the attaction image
+        the overlay with info/description jumps back up */
+        this.setState({
+            showInfo: false
+        });
+    }
+
     render() {
         const { title, description, className, image } = this.props;
         const { showInfo } = this.state;
@@ -92,13 +107,16 @@ class Attraction extends React.Component {
                 className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer 
           attraction ${className}`}
                 onClick={this.toggleInfo}
+                /* test: onMouseLeave runs when the mouse leaves the attraction image area*/
+                /* onMouseLeave={()=> console.log("we have left")} */
+                onMouseLeave={this.closeInfo}
             >
                 {/*check for the state: {showInfo ? 'show info': 'hide info'}*/}                {/* content under relative will be hidden initially */}
                 <div className="relative">
                     {/* our overlay which includes title and description;
         absolute positioning, viewport 100, flexbox, center items, background colour, font sizes */}
                     <div className="absolute w-100 h-100 flex items-center pa3 pa4-ns 
-                    bg-aqua overlay"
+                        bg-aqua overlay"
                     /* we can write styled directly on elements
                     we do a test to see whether our showInfo is true
                     if it is, we change the transform to none (overlay covers the image), 
@@ -109,13 +127,13 @@ class Attraction extends React.Component {
                     }}
                     >
                         <div>
-                            <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
-                            <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
-                        </div>
+                        <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+                        <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
                     </div>
-                    <img src={`../images/${image}`} className="db" />
                 </div>
+                <img src={`../images/${image}`} className="db" />
             </div>
+            </div >
         );
     }
 }
