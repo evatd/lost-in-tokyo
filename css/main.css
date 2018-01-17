@@ -1,3 +1,5 @@
+/* say, if we have an input: we bring it to the surface
+via relative positioning (!) and z-index = combo */
 body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Overpass Mono', monospace;
